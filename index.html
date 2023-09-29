@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/icons/Calculator-logo.png" id="icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <title>Google Calculator</title>
+    <script src="scripts/app.js" defer></script>
+</head>
+<body>
+    <div class="container" id="calculator">
+        <div class="top-input">
+            <div class="item-1" id="input-field"></div>
+            <div class="item-1" id="answer"></div>
+        </div>
+        <div class="underbar">
+            <div class="icons">
+                <div class="item-2" id="root">√ </div>
+                <div class="item-2" id="pie">π</div>
+                <div class="item-2" id="exponent">^</div>
+                <div class="item-2" id="factorials">!</div>
+            </div>
+            <div class="pulldown-button">
+                <img src="icons\down-arrow.png" alt="down-arrow-img" id="down-arrow">
+            </div>
+        </div>
+        <div class="numpad">
+            <div class="first-row">
+                <div class="item-3" id="AC">AC</div>
+                <!-- For the class be the button it is, like plus or 5 -->
+                <!-- Maybe flex box in grid? So grid for the rows and flex for everything else
+                Maybe flex for everything below the input window
+                -->
+                <div class="operation" id="parenthesis">( )</div>
+                <div class="operation" id="percentage">%</div>
+                <div class="operation" id="divide">÷</div>
+            </div>
+            <div class="second-row">
+                <div class="numbers" id="7">7</div>
+                <div class="numbers" id="8">8</div>
+                <div class="numbers" id="9">9</div>
+                <div class="operation" id="multiply">x</div>
+            </div>
+            <div class="third-row">
+                <div class="numbers" id="4">4</div>
+                <div class="numbers" id="5">5</div>
+                <div class="numbers" id="6">6</div>
+                <div class="operation" id="subtract">-</div>
+            </div>
+            <div class="fourth-row">      
+                <div class="numbers" id="1">1</div>
+                <div class="numbers" id="2">2</div>
+                <div class="numbers" id="3">3</div>
+                <div class="operation" id="addition">+</div>
+            </div>
+            <div class="final-row">
+                <div class="numbers" id="0">0</div>
+                <div class="numbers" id="decimal">.</div>
+                <div class="numbers" id="backspace">
+                    <img src="icons\backspace.png" alt="backspace-img" id="back"/>
+                </div>
+                <div class="operation" id="equal">=</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
