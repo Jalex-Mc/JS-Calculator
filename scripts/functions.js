@@ -1,3 +1,0 @@
-function getSelected(event) {
-    
-}
