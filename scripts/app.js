@@ -1,6 +1,7 @@
 // to do
 // error catching
 // set up the calc functions to work with the input. Go systematically to fix each one.
+// pi, squareroot in the input, display ! for factorial
 // set pull down of top row
 // set up top row operations correctly
 // re-figure out the parentheses's logic
