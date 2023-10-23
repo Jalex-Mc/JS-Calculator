@@ -10,6 +10,7 @@
     <link href="styles.css" rel="stylesheet">
     <title>Google Calculator</title>
     <script src="scripts/app.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.2/math.js" type="text/javascript" defer></script>
 </head>
 <body>
     <div class="container" id="calculator">
@@ -20,7 +21,7 @@
         <div class="underbar">
             <div class="icons">
                 <div class="item-2" id="root" onclick="squareRoot()">√ </div>
-                <div class="item-2" id="pie">π</div>
+                <div class="item-2" id="pie" onclick="pie()">π</div>
                 <div class="item-2" id="exponent">^</div>
                 <div class="item-2" id="factorials">!</div>
             </div>
@@ -30,36 +31,36 @@
         </div>
         <div class="numpad">
             <div class="first-row">
-                <div class="item-3" id="AC">AC</div>
-                <div class="operation" id="parenthesis">( )</div>
+                <div class="item-3" id="AC" onclick="ac()">AC</div>
+                <div class="operation" id="parenthesis" onclick="setParenthesis()">( )</div>
                 <div class="operation" id="percentage">%</div>
-                <div class="operation" id="divide">÷</div>
+                <div class="operation" id="divide" onclick="setDisplay('&#xF7')">÷</div>
             </div>
             <div class="second-row">
-                <div class="numbers" id="7" value="7">7</div>
-                <div class="numbers" id="8" value="8">8</div>
-                <div class="numbers" id="9" value="9">9</div>
-                <div class="operation" id="multiply">x</div>
+                <div class="numbers" id="7" value="7" onclick="setDisplay(7)">7</div>
+                <div class="numbers" id="8" value="8" onclick="setDisplay(8)">8</div>
+                <div class="numbers" id="9" value="9" onclick="setDisplay(9)">9</div>
+                <div class="operation" id="multiply" onclick="setDisplay('x')">x</div>
             </div>
             <div class="third-row">
-                <div class="numbers" id="4" value="4">4</div>
-                <div class="numbers" id="5" value="5">5</div>
-                <div class="numbers" id="6" value="6">6</div>
-                <div class="operation" id="subtract">-</div>
+                <div class="numbers" id="4" value="4" onclick="setDisplay(4)">4</div>
+                <div class="numbers" id="5" value="5" onclick="setDisplay(5)">5</div>
+                <div class="numbers" id="6" value="6" onclick="setDisplay(6)">6</div>
+                <div class="operation" id="subtract" onclick="setDisplay('-')">-</div>
             </div>
             <div class="fourth-row">      
-                <div class="numbers" id="1">1</div>
-                <div class="numbers" id="2">2</div>
-                <div class="numbers" id="3">3</div>
-                <div class="operation" id="addition">+</div>
+                <div class="numbers" id="1" onclick="setDisplay(1)">1</div>
+                <div class="numbers" id="2" onclick="setDisplay(2)">2</div>
+                <div class="numbers" id="3" onclick="setDisplay(3)">3</div>
+                <div class="operation" id="addition" onclick="setDisplay('+')">+</div>
             </div>
             <div class="final-row">
-                <div class="numbers" id="0">0</div>
-                <div class="numbers" id="decimal">.</div>
-                <div class="numbers" id="backspace">
+                <div class="numbers" id="0" onclick="setDisplay(0)">0</div>
+                <div class="numbers" id="decimal" onclick="setDisplay('.')">.</div>
+                <div class="numbers" id="backspace" onclick="backspace()">
                     <img src="icons\backspace.png" alt="backspace-img" id="back"/>
                 </div>
-                <div class="operation" id="equal">=</div>
+                <div class="operation" id="equal" onclick="answerCalculated()">=</div>
             </div>
         </div>
     </div>

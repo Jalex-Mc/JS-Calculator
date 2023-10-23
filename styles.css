@@ -7,10 +7,10 @@ body {
     margin: 25vh auto;
     color: black;
     background-color: darkgray;
-    min-height: 588.1px;
-    min-width: 276.667px;
-    max-height: 588.1px;
-    max-width: 276.667px;
+    min-height: 643.2px;
+    min-width: 289.92px;
+    max-height: 643.2px;
+    max-width: 289.92px;
     font-family: 'Roboto', sans-serif;
     border-radius: 0 0 20px 20px;
 }
@@ -29,7 +29,8 @@ body {
 
 .top-input {
     background-color: #ede3e2;
-    max-height: 176.43px;
+    /* max-height: 176.43px; */
+    min-height: 30%;
     border-radius: 20px 20px 0 0;
 }
 

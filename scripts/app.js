@@ -1,17 +1,24 @@
 // to do
-// re-do how I select values on the calculator
 // error catching
-// reconnect the script the to html.
-
+// use an array to store the answers, if an operator is pressed, it
+// will automatically show the calculation in the answer field
+// so once an operator is pressed, it will recalculate after each input.
+// create a function to check if an operator was pressed in setDisplay, continuesly run?
+// using an operators list.
+// use the list of operators to check 
+// so we can keep the calculations while adding to the input.
+// set pull down of top row
+// set up top row operations correctly
+// re-figure out the parentheses's logic
+// fix the stylings for input area.
 
 const input = document.getElementById("input-field");
-const answer = document.getElementById("answer")
-
-const operators = ['(', ')', '%', '÷', 'x', '-', '+']
-
+const answer = document.getElementById("answer");
+const continuedAnswers = [];
+const operators = ['(', ')', '%', '÷', 'x', '-', '+'];
 
 function setDisplay(clicked) {
-    input.textContent += clicked;
+    input.textContent += clicked.toString();
 }
 
 // checks the input to see if an open parentheses was added or not.
@@ -19,7 +26,7 @@ function setDisplay(clicked) {
 // then checks if the opening parenthese is after or before the closing, and if it's after, and there's 
 // a number as the last item in the string, it will add a closing parenthesis, else, it will add an opening
 
-function setParenthese() {
+function setParenthesis() {
     let inputValue = input.textContent 
     if (!inputValue) {
         setDisplay("(")
@@ -32,10 +39,19 @@ function setParenthese() {
 
 function answerCalculated() {
     let displayedContent = input.textContent
-    let joinedInput = displayedContent.join('')
-    input.textContent = (eval(joinedInput)).toString();
-    let calculatedDisplay = number(input.textContent);
-    return calculatedDisplay
+    displayedContent = displayedContent.replace('&#xF7', '/')
+    displayedContent = displayedContent.replace('x', '*')
+    answer.textContent = eval(displayedContent).toString()
+    console.log(displayedContent)
+    console.log(eval(displayedContent))
+}
+
+function answerDisplayed(calculation) {
+    answer.textContent = calculation
+}
+
+function backspace() {
+    input.textContent = input.textContent.slice(0, -1)
 }
 
 // JavaScript has built in Math functions.
@@ -86,6 +102,11 @@ function factorial() {
       return input.textContent = "Format error"
     }  
 }
+
+function ac() {
+    input.textContent = ""
+}
+
 // get the display value, and then multiple that by sin, and have an entered number for sin
 function sin(num) {
     return answer.textContent = Math.sin(num)
