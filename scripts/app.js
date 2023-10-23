@@ -1,12 +1,6 @@
 // to do
 // error catching
-// use an array to store the answers, if an operator is pressed, it
-// will automatically show the calculation in the answer field
-// so once an operator is pressed, it will recalculate after each input.
-// create a function to check if an operator was pressed in setDisplay, continuesly run?
-// using an operators list.
-// use the list of operators to check 
-// so we can keep the calculations while adding to the input.
+// set up the calc functions to work with the input. Go systematically to fix each one.
 // set pull down of top row
 // set up top row operations correctly
 // re-figure out the parentheses's logic
@@ -16,10 +10,8 @@ const input = document.getElementById("input-field");
 const answer = document.getElementById("answer");
 const continuedAnswers = [];
 const operators = ['(', ')', '%', '÷', 'x', '-', '+'];
-
-function setDisplay(clicked) {
-    input.textContent += clicked.toString();
-}
+const history = [];
+let isClickedAgain = false;
 
 // checks the input to see if an open parentheses was added or not.
 // check if input has parenthesis and if it does, which one was last.
@@ -41,14 +33,40 @@ function answerCalculated() {
     let displayedContent = input.textContent
     displayedContent = displayedContent.replace('&#xF7', '/')
     displayedContent = displayedContent.replace('x', '*')
+    displayedContent = displayedContent.replace('^', '**')
+    console.log(displayedContent)
     answer.textContent = eval(displayedContent).toString()
+    if (!isClickedAgain) {
+        history.push(answer.textContent)
+        isClickedAgain = true
+    }
     console.log(displayedContent)
     console.log(eval(displayedContent))
+    console.log(history)
 }
 
-function answerDisplayed(calculation) {
-    answer.textContent = calculation
+function continuousAnswerUpdate() {
+    for (let item = 0; item < operators.length; item++) {
+        if (input.textContent.includes(item)) {
+            answerCalculated()
+        }
+    }
+    //get an error in the console, but at least it works, you can use the includes function with the caret in an array apparently.
+    // couldn't find out why, if I included it above, it would break the operation and would execute answerCalculated for any button press.
+    if (input.textContent.includes('^')) {
+        answerCalculated()
+    }
+    return
 }
+
+function setDisplay(clicked) {
+    input.textContent += clicked.toString();
+    continuousAnswerUpdate();
+}
+    // make the string into a list?
+    // I think use includes as it checks if the array has the item
+    // Make a for loop for the operators array, and use includes function to see if it's
+    // in the string, if so, console log yes or no. 
 
 function backspace() {
     input.textContent = input.textContent.slice(0, -1)
@@ -69,9 +87,17 @@ function squareRoot() {
 function pie() {
     displayedContent = input.textContent
     if (!displayedContent) {
-        input.textContent = "3.141592653589793"
+        answer.textContent = "3.141592653589793"
     } else {
-    eval(Math.sqrt(displayedContent))
+    eval(displayedContent + "3.141592653589793")
+    }
+}
+
+function exponent() {
+    if (!input.textContent) {
+        return
+    } else {
+        setDisplay("^")
     }
 }
 
@@ -105,6 +131,7 @@ function factorial() {
 
 function ac() {
     input.textContent = ""
+    answer.textContent = ""
 }
 
 // get the display value, and then multiple that by sin, and have an entered number for sin
@@ -124,7 +151,7 @@ function tan() {
 // e stands for exponent of 10, but I don't like single character functions or variables
 function eten() {
     // calculated answer**10
-    return answer.textContent = answerCalculated()**10 
+    answer.textContent = answerCalculated()**10 
 }
 // need to figure out how to keep updating the answer when inputing numbers after e is click
 // for below, repeat the calculations if one of these is clicked. Maybe have a truth or false variable inside
